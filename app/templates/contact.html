@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block js %}
+{% endblock %}
+
+
+{% block main %}
+<div class="container">
+    <h2>Contact Form</h2>
+    <p>Fill in this form to contact the site owners</p>
+    <form action="" method="post"  enctype="multipart/form-data" class="form-group"> 
+    <dl>
+        <dt>Name</dt>
+        <dd><input type="text" size="50" name="name"></dd>
+        <dt>E-mail</dt>
+        <dd><input type="text" size="50" name="email"></dd>
+        <dt>Subject</dt>
+        <dd><input type="text" size="50" name="subject"></dd>
+        <dt>Message</dt>
+        <dd><textarea  name="message" rows="3"></textarea></dd>
+         <dd><input type=submit value=Send>
+    </dl>
+    </div>
+{% endblock %}
