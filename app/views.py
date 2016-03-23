@@ -7,6 +7,7 @@ This file creates your application.
 """
 
 from app import app
+from send_email import sendemail
 from flask import render_template, request, redirect, url_for
 
 
@@ -36,10 +37,19 @@ def send_text_file(file_name):
     file_dot_text = file_name + '.txt'
     return app.send_static_file(file_dot_text)
 
-@app.route('/contact')
+@app.route('/contact',methods=['GET','POST'])
 def contact():
     """Render the website's contact page."""
-    return render_template('contact.html')
+    if request.method=='GET':
+        return render_template('contact.html')
+    if request.method=='POST':
+        name=request.form['name']
+        email=request.form['email']
+        subject=request.form['subject']
+        message=request.form['message']
+        sendemail(name,email,subject,message)
+        
+        return "Message was sent"
     
 @app.after_request
 def add_header(response):

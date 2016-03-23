@@ -3,23 +3,55 @@
 
 {% block js %}
 {% endblock %}
+{% block css %}
+<style type="text/css">
+  #contactform{
+      background-color:#D3D7D3;
+      color:#1A3817;
+      
+  } 
+  .highlight{
+      color:red;
+  }
+  .whitetext{
+      color:white;
+  }
+  h2{
+      font-weight:bold;
+  }
+</style>
 
+{%endblock%}
 
 {% block main %}
-<div class="container">
-    <h2>Contact Form</h2>
+<div class="container" id="contactform">
+    <h2>CONTACT FORM</h2>
     <p>Fill in this form to contact the site owners</p>
-    <form action="" method="post"  enctype="multipart/form-data" class="form-group"> 
-    <dl>
-        <dt>Name</dt>
-        <dd><input type="text" size="50" name="name"></dd>
-        <dt>E-mail</dt>
-        <dd><input type="text" size="50" name="email"></dd>
-        <dt>Subject</dt>
-        <dd><input type="text" size="50" name="subject"></dd>
-        <dt>Message</dt>
-        <dd><textarea  name="message" rows="3"></textarea></dd>
-         <dd><input type=submit value=Send>
-    </dl>
+    <form action="{{ url_for('contact') }}" method="post"  enctype="multipart/form-data" class="form-group"> 
+    <div class="form-group">
+        <label>Name<br></label><br>
+            <span class="highlight">*</span> <span class="whitetext">(Required)</span>
+         <div>Please Enter You full name</div>
+       <input type="text" size="50" name="name"class="form-control">
+    </div>
+    <div class="form-group">
+        <label>E-Mail</label><br>
+        <span class="highlight">*</span> <span class="whitetext">(Required)</span>
+         <div>Please enter you e-mail address</div>
+        <input type="text" size="50" name="email"class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Subject</label><br>
+        <span class="highlight">*</span> <span class="whitetext">(Required)</span>
+        <input type="text" size="50" name="subject"class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Message</label><br>
+        <span class="highlight">*</span> <span class="whitetext">(Required)</span>
+         <div>Please enter the message you want to send</div>
+        <textarea  name="message" rows="3" class="form-control" ></textarea>
+    </div>
+        <button type="submit" class="btn btn-default">Send</button>
+    
     </div>
 {% endblock %}
